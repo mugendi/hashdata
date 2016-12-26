@@ -12,7 +12,7 @@ When you need to hash your data and maintain numeric precision!
         - [```.encode( arr [,random] )```](#encode-arr-random-)
         - [```.decode( hash )```](#decode-hash-)
     - [Generating your own Hash-Map](#generating-your-own-hash-map)
-    - [Be wise Bro, will you?](#be-wise-bro-will-you)
+    - [Be wise Now, will you?](#be-wise-now-will-you)
     - [Wait, so you need to hash Objects too?](#wait-so-you-need-to-hash-objects-too)
     - [Tests](#tests)
     - [TODO](#todo)
@@ -118,7 +118,7 @@ This creates a new hash-map file that will then be used to generate your hashes.
 
 Normally, a new hash-map file will not improve compression or any other features but only generate hashed that are unique/different.
 
-## Be wise Bro, will you?
+## Be wise Now, will you?
 This module is not written with any notion of security whatsoever in mind! So never use it to hash sensitive data!
 
 Also, this module does not seek or attempt to compress data! Actually, it is impossible to keep hashes *neat* and *pretty* while still achieving any reasonable form of compression. So if you seek shorter hashes, then this is not for you! From tests run, the average compression is a paltry 12-15%. 

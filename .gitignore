@@ -2,6 +2,8 @@ node_modules
 config/firebase.json
 config/redis.json
 read-sources
+data/arr.json
+data/num-divisors.json
 *.ico
 *.ini
 *.env

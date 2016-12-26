@@ -1,28 +1,23 @@
 {
-  "name": "hashdata",
-  "version": "0.0.1",
-  "description": "Hash data within arrays. For when you need to hash your data and maintain numeric precision!",
-  "main": "index.js",
+  "name": "hash-object2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hash2.js",
   "scripts": {
     "test": "node ./tests"
   },
-  "keywords": [
-    "hash",
-    "data",
-    "array",
-    "precision",
-    "floats"
-  ],
-  "author": "Anthony Mugendi <ngurumugz@gmail.com>",
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.2",
-    "number-is-float": "^1.0.0",
-    "scientific-to-decimal": "^1.1.1"
+    "seededshuffle": "^0.1.1"
   },
   "devDependencies": {
+    "async": "^2.1.4",
     "chai": "^3.5.0",
     "chalk": "^1.1.3",
+    "clear-require": "^1.0.1",
     "mock-data": "^1.5.4"
   }
 }

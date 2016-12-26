@@ -9,9 +9,8 @@ When you need to hash your data and maintain numeric precision!
     - [And so...](#and-so)
     - [Time to code!](#time-to-code)
     - [API](#api)
-        - [```.encode( arr [,strict,log] )```](#encode-arr-strictlog-)
-        - [```.decode(hash [,strict])```](#decodehash-strict)
-    - [A note on 'strictness'](#a-note-on-strictness)
+        - [```.encode( arr [,random] )```](#encode-arr-random-)
+        - [```.decode( hash )```](#decode-hash-)
     - [Be wise Bro, will you?](#be-wise-bro-will-you)
     - [Wait, so you need to hash Objects too?](#wait-so-you-need-to-hash-objects-too)
     - [Tests](#tests)
@@ -40,7 +39,7 @@ An easy solution is to generate a hash from that data:
 
 Say, the array ```[254, 463, 8097]``` represents the data as follows : ```['country-code', 'merchant-id', 'product-code']```. You can then generate a hash(code) that packages all this data and can be used within your URL's.
 
-Using **this module** that hash would be ```CF4EG3JAK7B```. Sweet!
+Using **this module** that hash would be ```Z-HQb2QKYJ4```. Sweet!
 
 ## And so...
 
@@ -55,7 +54,7 @@ Back to the scenario above. Suppose then that you wanted to capture the followin
 
 This then becomes our array: ```[ 254, 463, 8097, 99.99, 10.5 ]``` where ```['country-code', 'merchant-id', 'product-code', 'product-price', 'percentage-discount']```
 
-With **HashData** that generates the following Hash: ```CfeEgdJakhKK99M5A```. Nice!
+With **HashData** that generates the following Hash: ```JW-Gb3a2t4JLJ9PhtVYMB5D-BE```. Nice!
 
 And that is the greatest motivation for writing this module. Because almost every other module works with integers only!
 
@@ -63,7 +62,7 @@ So in short, I wrote this coz I needed a module that will:
 
 1. Hash both integers & floats.
 
-2. Work with incredibly big integers! This module handles numbers upto **10e15**;
+2. Work with incredibly big integers! This module has been tested with numbers upto **10e15**;
 
 3. As much as possible, generate human-friendly hashes (like **CF4EG3JAK7B**). This module does not use the letters **'I|i, L|l, O|o, S|s'** because they resemble the numerals **'1, 0 & 5'** and thus would result in confusing hashes. 
 
@@ -92,7 +91,7 @@ console.log('OUT', decoded);
 This should output: 
 
 ```
-Hash: CfeEgdJakhKK99M5A
+Hash: JW-Gb3a2t4JLJ9PhtVYMB5D-BE
 IN [ 254, 463, 8097, 99.99, 10.5 ]
 OUT [ 254, 463, 8097, 99.99, 10.5 ]
 ```
@@ -101,30 +100,18 @@ Simple!
 ## API
 This module exposes only two methods...
 
-### ```.encode( arr [,strict,log] )```
-- **arr**: Array to encode/hash
-- **strict**: Default is *False*. If set to true, the module will only hash integer values. It is worth noting that Integer hashing is more accurate than generating hashes from floats. While I have tested this module with all sorts of floats, it is probably a bad idea to try and hash values like **'9999.7657647654'**. It will probably work for the most part but you risk losing decimal-precision and getting **'9999.76576477'** as the decoded value. So until the module is mature and thoroughly tested, only use small floats with few decimals.
+### ```.encode( arr [,random] )```
+- **arr** : Array to encode/hash
 
-- **log**: Default is *false*. When set to true, the encoding steps are logged. Used for debugging the module.
+- **random** : If set to true, hashes generated are much more random. 
 
-### ```.decode(hash [,strict])```
-- **str**: The encoded hash to decode.
-- **strict**: as above.
-
-## A note on 'strictness'
- ```encode``` will automatically force **strict mode** any arrays with value(s) equal or greater than 10^6.
-
-It is likely that you could ```encode``` with *strict* set to true and then forget to decode with *strict*. Thereby resulting in an error (incorrect decoded data).
-
-To avoid this mistake, the encoded hash appends a *'plus'* at the end of the array (like this: ```CfeEgdJakhKkMA+```) which ```decode``` then uses to ***infer*** whether the hash was encoded with (strict) integers or not.
-
-This also means that should you receive a hash from *"some random source"*, then your decoding can infer as to whether to decode in **strict mode** or not.
+### ```.decode( hash )```
+- **hash** : The encoded hash to decode.
 
 ## Be wise Bro, will you?
 This module is not written with any notion of security whatsoever in mind! So never use it to hash sensitive data!
 
-Also, this module does not seek or attempt to compress data! Actually, it is impossible to keep hashes *neat* and *pretty* while still achieving any reasonable form of compression. So if you seek shorter hashes, then this is not for you!
-
+Also, this module does not seek or attempt to compress data! Actually, it is impossible to keep hashes *neat* and *pretty* while still achieving any reasonable form of compression. So if you seek shorter hashes, then this is not for you! From tests run, the average compression is a paltry 12-15%. 
 
 ## Wait, so you need to hash Objects too?
 OK, Check out my other module [Object-Encode](https://www.npmjs.com/package/object-encode/). That one does a little more to obscure your data but don't be fooled. Public Hashes are never to be used with sensitive information! Period!

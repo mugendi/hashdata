@@ -5,21 +5,22 @@ const _ = require('lodash')
 const hashdata = require('../');
 
 
-let array = [ 254, 463, 8097, 99.99, 10.67 ];
+let array = [ 254, 463, 8097, 99.99, 10.5 ];
 
 //Try strictmode, maybe?
-let encoded = hashdata.encode(array,0);
+let encoded = hashdata.encode(array);
 let decoded = hashdata.decode(encoded);
 
 let hashLen = encoded.length;
-let arrLen = array.toString().length;
+let arrLen = JSON.stringify(array).length;
 let diffLen = arrLen - hashLen;
 
-
-console.log(chalk.blue.bold('Hash: ' + encoded));
-console.log('IN' , array);
-console.log('OUT', decoded);
-console.log('An array of %d chars encoded to a hash of %d chars which is %s% compression', arrLen, hashLen, _.round(diffLen/arrLen,2))
+console.log("\n");
+console.log(chalk.green.bold('Hash: ' + encoded));
+console.log('->' , array);
+console.log('<-', decoded);
+console.log('An array of %d chars encoded to a hash of %d chars which is %s% compression', arrLen, hashLen, _.round(diffLen/arrLen,2));
+console.log("\n");
 
 //test equality
 assert.deepEqual(array, decoded);

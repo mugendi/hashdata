@@ -1,6 +1,6 @@
 {
   "name": "hashdata",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Hash data within arrays. For when you need to hash your data and maintain numeric precision!",
   "main": "hash2.js",
   "scripts": {

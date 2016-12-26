@@ -11,6 +11,7 @@ When you need to hash your data and maintain numeric precision!
     - [API](#api)
         - [```.encode( arr [,random] )```](#encode-arr-random-)
         - [```.decode( hash )```](#decode-hash-)
+    - [Generating your own Hash-Map](#generating-your-own-hash-map)
     - [Be wise Bro, will you?](#be-wise-bro-will-you)
     - [Wait, so you need to hash Objects too?](#wait-so-you-need-to-hash-objects-too)
     - [Tests](#tests)
@@ -107,6 +108,15 @@ This module exposes only two methods...
 
 ### ```.decode( hash )```
 - **hash** : The encoded hash to decode.
+
+## Generating your own Hash-Map
+This Module works by using a hash-map that is stored at ```./data/letter_map.json```.
+
+You can create your own map by running the **make.js** file ```node ./node_modules/hashdata/make.js``` ie. within the module folder.
+
+This creates a new hash-map file that will then be used to generate your hashes.
+
+Normally, a new hash-map file will not improve compression or any other features but only generate hashed that are unique/different.
 
 ## Be wise Bro, will you?
 This module is not written with any notion of security whatsoever in mind! So never use it to hash sensitive data!
